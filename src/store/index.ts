@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "./users/slice";
+import postsReducer  from "./posts/slice"
 
 const persistanceLocalStorageMiddleware = store => next => action => {
     next(action)
@@ -9,6 +10,7 @@ const persistanceLocalStorageMiddleware = store => next => action => {
 export const store = configureStore({
     reducer: {
         users: usersReducer,
+        posts: postsReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(persistanceLocalStorageMiddleware),
